@@ -3,14 +3,45 @@
 
 <head>
   <script src="https://aframe.io/releases/1.7.1/aframe.min.js"></script>
+
+  <script>
+    AFRAME.registerComponent('jump', {
+      init: function () {
+        const el = this.el;
+        let isJumping = false;
+
+        window.addEventListener('keydown', function (e) {
+          if (e.code === 'Space' && !isJumping) {
+            isJumping = true;
+
+            // Jump up
+            el.object3D.position.y += 1;
+
+            // Fall back down after 300ms
+            setTimeout(() => {
+              el.object3D.position.y -= 1;
+              isJumping = false;
+            }, 300);
+          }
+        });
+      }
+    });
+  </script>
 </head>
 
 <body>
 
   <a-scene>
 
-    <a-box position="-1 1 -3" color="red"></a-box>
+    <!-- Player camera with WASD movement + jump -->
+    <a-entity 
+      camera 
+      wasd-controls 
+      position="0 1.6 0"
+      jump>
+    </a-entity>
 
+    <a-box position="-1 1 -3" color="red"></a-box>
     <a-sphere position="1 1 -4" color="blue"></a-sphere>
 
     <!-- Grass floor -->
