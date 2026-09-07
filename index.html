@@ -13,15 +13,25 @@
 
     <a-sphere position="1 1 -4" color="blue"></a-sphere>
 
+    <!-- Grass floor -->
     <a-plane
       position="0 0 -4"
       rotation="-90 0 0"
       width="10"
       height="10"
-      color="#DDDDDD">
+      color="#4CAF50">
     </a-plane>
 
-    <a-sky color="#EEEEEE"></a-sky>
+    <!-- Blue sky -->
+    <a-sky color="#87CEEB"></a-sky>
+
+    <!-- Sun -->
+    <a-sphere
+      position="0 10 -20"
+      radius="3"
+      color="white"
+      material="shader: flat">
+    </a-sphere>
 
   </a-scene>
 
